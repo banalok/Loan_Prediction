@@ -5,8 +5,8 @@ setup(
     version="0.1",
     packages=find_packages(), 
     install_requires=[
-        "pandas==1.1.3",
-        "numpy",
+        "pandas==1.3.5",
+        "numpy==1.21.6",
         "matplotlib",
         "seaborn",
         "scikit-learn",
