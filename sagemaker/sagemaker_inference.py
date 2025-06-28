@@ -28,9 +28,9 @@ sample = pd.DataFrame({
 })
 
 engineered_sample = apply_feature_engineering(sample)
-print(f"Engineered columns: {engineered_sample.columns}")
+# print(f"Engineered columns: {engineered_sample.columns}")
 # convert to csv
-csv = engineered_sample.to_csv(index=False, header=False)
+csv = engineered_sample.to_csv(index=False, header=True)
 
 # Make prediction
 response = predictor.predict(csv)
