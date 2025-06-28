@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build-train-deploy:
+    runs-on: ubuntu-latest
+
+    steps:      
+      # Checkout repo      
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Python setup     
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+      
+      # Install general dependencies      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      # Install build tools for packaging
+      # Sagemaker needs wheels to be built and sdist from setup.py      
+      - name: Install build tools
+        run: |
+          pip install --upgrade setuptools wheel
+
+      # Package loan_prediction module
+      # creates dist/*.whl and .tar.gz files for SageMaker installation      
+      - name: Package module via setup.py
+        run: |
+          python setup.py sdist bdist_wheel
+
+      # Run SageMaker training job script
+      # triggers training via trainer in AWS SageMaker      
+      - name: Run SageMaker training
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        run: |
+          python sagemaker/sagemaker_train.py
+    
+      # run SageMaker deployment script
+      # deploy trained model as an endpoint in AWS SageMaker      
+      - name: Run SageMaker deployment
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        run: |
+          python sagemaker/sagemaker_deploy.py
