@@ -1,0 +1,35 @@
+data:
+  path: Data\loan_data.csv   #G:\Alok\Loan_Prediction\
+
+preprocessing:
+  target_column: Loan_Status
+  scale_columns:
+    - LoanAmount
+    - Loan_Amount_Term
+    - EMI
+    - LoanToIncomeRatio
+    - TotalIncome_log
+  categorical_columns:    
+    - Property_Area
+    - Dependents
+  binary_columns:
+  -   Gender
+    - Married
+    - Education
+    - Self_Employed
+    - HasCoapplicant
+    - Credit_History
+    - Credit_History_missing
+
+model:
+  test_size: 0.2
+  random_state: 42
+  classifiers:
+    - RandomForest
+    - LogisticRegression
+    - XGBoost
+
+output:
+  model_dir: models/
+  scaler_path: models/scaler.pkl
+  metrics_path: models/metrics.json

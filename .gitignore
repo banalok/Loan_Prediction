@@ -1,0 +1,6 @@
+dist/
+*.egg-info/
+build/
+.ipynb_checkpoints/
+LP_Env/
+.env/
