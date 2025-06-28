@@ -1,5 +1,5 @@
 data:
-  path: Data\loan_data.csv   #G:\Alok\Loan_Prediction\
+  path: Data/loan_data.csv   #G:\Alok\Loan_Prediction\
 
 preprocessing:
   target_column: Loan_Status
