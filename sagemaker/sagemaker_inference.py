@@ -3,12 +3,13 @@
 import pandas as pd
 from sagemaker.predictor import Predictor
 from sagemaker.serializers import CSVSerializer
+from sagemaker.deserializers import JSONDeserializer
 from src.feature_engineering import apply_feature_engineering
 
 ENDPOINT_NAME = "loan-prediction-endpoint"
 
 # predictor
-predictor = Predictor(endpoint_name=ENDPOINT_NAME, serializer=CSVSerializer())
+predictor = Predictor(endpoint_name=ENDPOINT_NAME, serializer=CSVSerializer(), deserializer=JSONDeserializer())
 
 # sample data matching training raw input schema
 sample = pd.DataFrame({
