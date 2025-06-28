@@ -10,9 +10,13 @@ def model_fn(model_dir):
     """
     model_path = os.path.join(model_dir, "model.pkl")
     print(f"Loading model from {model_path}")
-    model = joblib.load(model_path)
+    loaded = joblib.load(model_path)
+    if isinstance(loaded, tuple):
+        model = loaded[0]
+    else:
+        model = loaded
     print("Model loaded successfully.")
-    print(f"Model type: {type(model)}")
+    print("Model type:", type(model))
     return model
 
 def input_fn(input_data, content_type):
