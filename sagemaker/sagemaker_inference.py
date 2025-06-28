@@ -27,10 +27,10 @@ sample = pd.DataFrame({
     "Loan_Status": ["Y"]            
 })
 
-processed_sample = apply_feature_engineering(sample)
+engineered_sample = apply_feature_engineering(sample)
 
 # convert to csv
-csv = sample.to_csv(index=False, header=False)
+csv = engineered_sample.to_csv(index=False, header=False)
 
 # Make prediction
 response = predictor.predict(csv)

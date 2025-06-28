@@ -12,6 +12,7 @@ def model_fn(model_dir):
     print(f"Loading model from {model_path}")
     model = joblib.load(model_path)
     print("Model loaded successfully.")
+    print(f"Model type: {type(model)}")
     return model
 
 def input_fn(input_data, content_type):
