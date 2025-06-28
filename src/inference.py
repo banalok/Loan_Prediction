@@ -27,6 +27,7 @@ def input_fn(input_data, content_type):
     if content_type == "text/csv":
         from io import StringIO
         df = pd.read_csv(StringIO(input_data))
+        print(f"Input data columns: {df.columns}")
         print("Input data parsed successfully.")
         return df
     else:
