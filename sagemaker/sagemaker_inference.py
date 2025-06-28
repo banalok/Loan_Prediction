@@ -3,26 +3,31 @@
 import pandas as pd
 from sagemaker.predictor import Predictor
 from sagemaker.serializers import CSVSerializer
+from src.feature_engineering import apply_feature_engineering
 
 ENDPOINT_NAME = "loan-prediction-endpoint"
 
 # predictor
 predictor = Predictor(endpoint_name=ENDPOINT_NAME, serializer=CSVSerializer())
 
-# Example input sample 
+# sample data matching training raw input schema
 sample = pd.DataFrame({
-    "gender": ["Male"],
-    "married": ["Yes"],
-    "dependents": ["0"],
-    "education": ["Graduate"],
-    "self_employed": ["No"],
-    "applicantincome": [5000],
-    "coapplicantincome": [0],
-    "loanamount": [200],
-    "loan_amount_term": [360],
-    "credit_history": [1.0],
-    "property_area": ["Urban"]
+    "Loan_ID": ["LP999999"],        
+    "Gender": ["Male"],
+    "Married": ["Yes"],
+    "Dependents": ["0"],
+    "Education": ["Graduate"],
+    "Self_Employed": ["No"],
+    "ApplicantIncome": [5000],
+    "CoapplicantIncome": [2000],
+    "LoanAmount": [150],
+    "Loan_Amount_Term": [360],
+    "Credit_History": [1.0],
+    "Property_Area": ["Urban"],
+    "Loan_Status": ["Y"]            
 })
+
+processed_sample = apply_feature_engineering(sample)
 
 # convert to csv
 csv = sample.to_csv(index=False, header=False)

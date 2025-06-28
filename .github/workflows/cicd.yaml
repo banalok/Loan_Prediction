@@ -58,3 +58,7 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         run: |
           python sagemaker/sagemaker_deploy.py
+
+      - name: Test deployed endpoint
+        run: |
+          python sagemaker/sagemaker_inference.py
