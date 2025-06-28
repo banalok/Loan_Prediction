@@ -3,4 +3,4 @@ dist/
 build/
 .ipynb_checkpoints/
 LP_Env/
-.env/
+.env
