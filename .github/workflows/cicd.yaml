@@ -61,4 +61,5 @@ jobs:
 
       - name: Test deployed endpoint
         run: |
+          export PYTHONPATH="${PYTHONPATH}:${GITHUB_WORKSPACE}"
           python sagemaker/sagemaker_inference.py
