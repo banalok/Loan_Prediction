@@ -1,10 +1,10 @@
-# 🏦 Loan Prediction Pipeline with SageMaker Deployment
+# Loan Prediction Pipeline with SageMaker Deployment
 
 This project implements an **end-to-end machine learning pipeline** for predicting loan approvals using scikit-learn and AWS SageMaker. It automates data preprocessing, feature engineering, model training (Logistic Regression, Random Forest, XGBoost), evaluation, and deployment as a SageMaker endpoint with **CI/CD integration via GitHub Actions**.
 
 ---
 
-## 🚀 **Project Highlights**
+## **Project Highlights**
 
 - **Data pipeline**: Cleaned raw data, applied domain-specific feature engineering.
 - **Model training**: Trained multiple models and saved best model based on F1 score.
@@ -16,7 +16,7 @@ This project implements an **end-to-end machine learning pipeline** for predicti
 
 ---
 
-## 📁 **Project Structure**
+## **Project Structure**
 
 ```
 Loan_Prediction/
@@ -55,7 +55,7 @@ Loan_Prediction/
 ├── train_script.py
 ```
 
-## 🔄 **CI/CD Pipeline**
+## **CI/CD Pipeline**
 
 This project includes GitHub Actions CI/CD (`.github/workflows/cicd.yaml`) to:
 
@@ -69,7 +69,7 @@ This project includes GitHub Actions CI/CD (`.github/workflows/cicd.yaml`) to:
 
 ---
 
-## 🖼️ **Project Demonstration**
+## **Project Demonstration**
 
 Below are screenshots demonstrating SageMaker integration:
 
@@ -85,7 +85,7 @@ Below are screenshots demonstrating SageMaker integration:
   
   ![SageMaker Deployed Endpoint](images/SageMakerDeployedEndpoint.JPG)---
 
-## 🔧 **Technologies Used**
+## **Technologies Used**
 
 - **Machine Learning**: Scikit-learn, XGBoost
 - **Cloud Platform**: AWS SageMaker
@@ -95,7 +95,7 @@ Below are screenshots demonstrating SageMaker integration:
 
 ---
 
-## 📊 **Model Performance**
+## **Model Performance**
 
 The pipeline evaluates multiple models and selects the best performer based on F1 score:
 - Logistic Regression
