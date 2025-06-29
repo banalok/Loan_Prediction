@@ -1,6 +1,7 @@
 # inference.py
 
 import os
+import json
 import joblib
 import pandas as pd
 
@@ -43,14 +44,8 @@ def predict_fn(input_data, model):
     return predictions
 
 def output_fn(prediction, accept):
-    """
-    Format prediction output.
-    """
     print(f"Formatting output as {accept}")
-    if accept == "application/json":
-        return {"predictions": prediction.tolist()}, accept
-    elif accept == "text/csv":
-        output = pd.DataFrame(prediction).to_csv(index=False, header=False)
-        return output, accept
-    else:
-        raise ValueError(f"Unsupported accept type: {accept}")
+    result = {"predictions": prediction.tolist()}
+    print("Formatted prediction result:", result)
+    return json.dumps(result), "application/json"
+
