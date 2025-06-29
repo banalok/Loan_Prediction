@@ -1,3 +1,5 @@
+# script to test different logic locally before cloud training and deployment
+
 # import joblib
 
 # model = joblib.load("G:\Alok\Loan_Prediction\models\\best_model.pkl")
@@ -9,7 +11,7 @@ import joblib
 import pandas as pd
 from src.feature_engineering import apply_feature_engineering
 # Load the trained pipeline model
-model_path = "G:\Alok\Loan_Prediction\models\\best_model.pkl"  # update path if different
+model_path = "G:\Alok\Loan_Prediction\models\\best_model.pkl" 
 model = joblib.load(model_path)
 print("Model loaded successfully.")
 

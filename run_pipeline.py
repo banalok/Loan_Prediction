@@ -1,3 +1,5 @@
+# script to run preprocessing and training pipeline locally
+
 from src.config import load_config
 from src.data_loader import load_data
 from src.feature_engineering import apply_feature_engineering
