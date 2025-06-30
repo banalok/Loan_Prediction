@@ -38,7 +38,7 @@ if model_exists:
 else:
     # upload training data to S3
     input_train = session.upload_data(
-        path=cfg["data"]["path"], #"Data/loan_data.csv",  # local path to your dataset
+        path=cfg["data"]["path"], #"Data/loan_data.csv", 
         bucket=bucket,
         key_prefix=f"{prefix}/data"
     )
@@ -46,11 +46,11 @@ else:
 
     # trainer
     trainer = SKLearn(
-        entry_point="train_script.py",  # your SageMaker training script
+        entry_point="train_script.py",  # SageMaker training script
         source_dir=".",                 # uploads entire project (including setup.py and src/)
         role=role,
         instance_type="ml.m5.large",
-        framework_version="1.2-1",      # scikit-learn version (adjust if needed)
+        framework_version="1.2-1",      # scikit-learn version 
         py_version="py3",
         hyperparameters={},             
         base_job_name="loan-prediction-training"
